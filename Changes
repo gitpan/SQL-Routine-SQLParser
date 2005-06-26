@@ -1,0 +1,33 @@
+2005-06-25   Darren Duncan <perl@DarrenDuncan.net>
+
+	* SQL-Routine-SQLParser Release 0.01.
+
+	* This release is a place-holder for other distributions to refer to; it
+	contains a framework into which I can put code that does something useful
+	later; for now it declares a functionally empty object.
+
+	* Original code file versions are: SQLParser.pm v0.01 and en.pm v0.01.
+
+	* Original external dependencies are on Locale::KeyedText v1.05 and on
+	SQL::Routine v0.65.
+
+	* This is the first release of any distribution to contain
+	SQL::Routine::SQLParser.  This is the first release of any distribution for
+	which some of the existing work that became the SQL-Routine-SQLParser
+	distribution was in the form of executable code, and not just design
+	documentation.
+
+	* For historical posterity, this is this distribution's file manifest:
+
+		Changes
+		GPL
+		INSTALL
+		lib/SQL/Routine/SQLParser.pm
+		lib/SQL/Routine/SQLParser/L/en.pm
+		Makefile.PL
+		MANIFEST
+		META.yml                                 Module meta-data (added by MakeMaker)
+		ReadMe
+		t/lib/t_SRT_SP_Util.pm
+		t/SRT_SP_00_Compile.t
+		TODO

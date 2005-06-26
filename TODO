@@ -1,0 +1,15 @@
+* Add some actual functionality to SQLParser.pm.  When this happens, also add an
+external dependency on something like Parse::RecDescent which will help
+implement said functionality.
+
+* Update the Changes file to summarize events prior to 2005-06-25, where the 
+module existed soley as references in Rosetta::Framework and other places.  Then 
+update the copyright statement so its first year coincides with the first mention; 
+for now it is the same date as SQL::Routine::SQLParser, which is probably wrong.
+
+* Make the test suite test more than that the module compiles.
+
+* Any further improvements will be implemented over time as they are needed. 
+See the separately released "Rosetta-Engine-Generic" and "Rosetta-Emulator-DBI"
+distributions for a clue as they are the initial main dependents of the
+SQL::Routine::SQLParser module.
