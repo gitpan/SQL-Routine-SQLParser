@@ -1,15 +1,16 @@
 #!perl
 use 5.008001; use utf8; use strict; use warnings;
 
-use Test::More 0.47;
+use Test::More;
+use version;
 
 plan( 'tests' => 7 );
 
 use_ok( 'SQL::Routine::SQLParser' );
-cmp_ok( $SQL::Routine::SQLParser::VERSION, '==', 0.01, "SQL::Routine::SQLParser is the correct version" );
+is( $SQL::Routine::SQLParser::VERSION, qv('0.2.0'), "SQL::Routine::SQLParser is the correct version" );
 
 use_ok( 'SQL::Routine::SQLParser::L::en' );
-cmp_ok( $SQL::Routine::SQLParser::L::en::VERSION, '==', 0.01, "SQL::Routine::SQLParser::L::en is the correct version" );
+is( $SQL::Routine::SQLParser::L::en::VERSION, qv('0.2.0'), "SQL::Routine::SQLParser::L::en is the correct version" );
 
 use lib 't/lib';
 
