@@ -1,99 +1,53 @@
                        SQL-Routine-SQLParser
 ----------------------------------------------------------------------
 
+2005-09-12   Darren Duncan <perl@DarrenDuncan.net>
+
+    * SQL-Routine-SQLParser Release 0.2.1 (SVN r808).
+
+    * New code file versions are: SQLParser.pm 0.2.1 and en.pm 0.2.1.
+
+    * Updated all POD-containing files to re-wrap any non-indented POD
+    paragraphs to a 75 character width, which is 5 less than the 80
+    character width they were wrapped to before.  This change should make
+    it easier to copy and paste a diff or patch of this documentation into
+    an email message, where it is quoted at least once, without any line
+    wrapping occurring.  Likewise, these standard documentation files were
+    re-wrapped to 75 characters: ReadMe, INSTALL, LGPL|GPL, Changes, TODO.
+
+    * Revised this Changes file to replace all detail entries for releases
+    0.01 thru 0.2.0 with a significant release list for the same period;
+    also added references to when all 'Rosetta developer release' (#s 1-3)
+    were.
+
 2005-09-08   Darren Duncan <perl@DarrenDuncan.net>
 
-    * SQL-Routine-SQLParser Release 0.2.0.
+    * SQL-Routine-SQLParser Release 0.2.0 (SVN r787), containing
+    SQL::Routine::SQLParser 0.2.0, was released on CPAN.  This is the first
+    release of this distribution and its modules for which they had 3-part
+    version numbers, rather than floating point version numbers.
 
-    * New code file versions are: SQLParser.pm v0.2.0 and en.pm v0.2.0.
-
-    * Updated external dependencies on Locale::KeyedText to v1.6.0 and on
-    SQL::Routine to v0.70.0.
-
-    * From now on, if the minimum Perl version that this distribution depends on
-    (currently 5.008001) comes bundled with a satisfactory version of a module
-    that we have a dependency on, then we will no longer specify any version
-    number when referring to said module.  An example of such is Test::More.
-
-    * Added a new main title to this Changes file that matches the ReadMe file.
-
-    * Rewrote the documentation section KEEPING UP TO DATE in the ReadMe file.
-
-    * Minor SQLParser.pm documentation update so that any Perl subs which were
-    referred to as "function/method" etc are now simply "function".
-
-    * Converted every distribution file to use indentations composed of space 
-    characters (4 spaces per indentation level) rather than tab characters.
-
-    * Updated all files containing POD (*.pm, *.pod) to re-order some POD
-    sections.  Now all of the POD is after all of the code, rather than that
-    being mostly true but for a bit of POD before most of the code.  The 'NAME'
-    POD has been moved to just above the 'SYNOPSIS'. The 'DEPENDENCIES' has been
-    moved to just above the 'SEE ALSO'.  Any 'BUGS' and 'CAVEATS' have been
-    moved to just below the 'SEE ALSO'.  The 'COPYRIGHT AND LICENSE' has been
-    moved to the very end of the file, except that any 'CREDITS' have been moved
-    below that.  Also updated the ReadMe file to move the 'CREDITS' below the
-    'COPYRIGHT AND LICENSE'.  There were zero changes to the content of any POD 
-    sections, and no new POD sections were added or existing ones removed,
-    except for those explicitly listed below.
-
-    * Updated all files containing POD:  Deleted the 'SYNTAX' section, whose
-    value was dubious, from any files that had one.  Renamed 'COPYRIGHT AND
-    LICENSE' to 'LICENCE AND COPYRIGHT', and added a new 'AUTHOR' section just
-    above it.  Renamed 'CREDITS' to 'ACKNOWLEDGEMENTS' in any files that had
-    one.  COPYRIGHT and CREDITS were likewise renamed in the ReadMe file.
-
-    * Updated the POD in all *.pm files:  Added a new 'VERSION' section, which
-    appears just below the 'NAME'.  Added a new 'INCOMPATIBILITIES' section,
-    which appears just below 'DEPENDENCIES'.  Renamed and/or merged any 'BUGS'
-    and 'CAVEATS' sections into a single 'BUGS AND LIMITATIONS' section, and
-    added that section to any files lacking its predecessors.  Rewrote the
-    'DEPENDENCIES' into a new paragraph-resembling format that specifies where
-    each dependency is, such as bundled with perl, or bundled with the current
-    distribution, or available on CPAN; also rewrote the ReadMe file version.
-
-    * Updated all *.pm files to add a new external dependency on the 'version'
-    module, which has core-like functionality but isn't yet bundled with Perl;
-    all 'our $VERSION' declarations were changed to qv-wrapped three-part format
-    from floating point format; likewise, updated the *_00_Compile.t file to use
-    'version', and also changed the tests for expected module versions to be
-    performed by is() rather than cmp_ok().
-
-    * Updated SQLParser.pm to add a new external dependency on the 'only' 
-    module, which has core-like functionality but isn't yet bundled with Perl;
-    all "use Foo N.NN" statements were changed to three-part format and now look 
-    like "use only 'Foo' => 'N.N.N-'".
+    * These were the current versions cited by the public announcement for
+    Rosetta/SQL-Routine developer release #3.
 
 2005-06-25   Darren Duncan <perl@DarrenDuncan.net>
 
-    * SQL-Routine-SQLParser Release 0.01.
+    * SQL-Routine-SQLParser Release 0.01, containing
+    SQL::Routine::SQLParser 0.01, was released on CPAN; this is the first
+    release of the SQL-Routine-SQLParser distribution.  This is the first
+    release of any distribution to contain SQL::Routine::SQLParser.  This
+    is the first release of any distribution for which some of the existing
+    work that became the SQL-Routine-SQLParser distribution was in the form
+    of executable code, and not just design documentation.  This is the
+    only release of this distribution and its modules for which they had
+    floating point version numbers, rather than 3-part version numbers.
 
-    * This release is a place-holder for other distributions to refer to; it
-    contains a framework into which I can put code that does something useful
-    later; for now it declares a functionally empty object.
+2005-04-03   Darren Duncan <perl@DarrenDuncan.net>
 
-    * Original code file versions are: SQLParser.pm v0.01 and en.pm v0.01.
+    * These did not exist and were not cited by the public announcement for
+    SQL-Routine/Rosetta developer release #2.
 
-    * Original external dependencies are on Locale::KeyedText v1.05 and on
-    SQL::Routine v0.65.
+2004-08-06   Darren Duncan <perl@DarrenDuncan.net>
 
-    * This is the first release of any distribution to contain
-    SQL::Routine::SQLParser.  This is the first release of any distribution for
-    which some of the existing work that became the SQL-Routine-SQLParser
-    distribution was in the form of executable code, and not just design
-    documentation.
-
-    * For historical posterity, this is this distribution's file manifest:
-
-        Changes
-        GPL
-        INSTALL
-        lib/SQL/Routine/SQLParser.pm
-        lib/SQL/Routine/SQLParser/L/en.pm
-        Makefile.PL
-        MANIFEST
-        META.yml                                 Module meta-data (added by MakeMaker)
-        ReadMe
-        t/lib/t_SRT_SP_Util.pm
-        t/SRT_SP_00_Compile.t
-        TODO
+    * These did not exist and were not cited by the public announcement for
+    Rosetta/SQL-SyntaxModel developer release #1.

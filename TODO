@@ -1,29 +1,32 @@
 TODO
 
-* Update the white space of this distribution to follow some best practices.
-This includes having code lines (and POD lines, presumably) not be longer than
-80 or 78 characters.  Also run the works through perltidy for the first time as
-well (though I was very consistent before), which may alter a few other things
-towards best practices.
+* Update the white space of this distribution to follow some best
+practices.  This includes having code lines not be longer than 75
+characters (like the POD lines).  This and other changes will be
+accomplished by running all the code files through perltidy (the first time
+I ever use that program, though I was a very consistent formatter before),
+which may alter a few other things towards best practices.
 
 * Convert all class objects to be of the inside-out variety rather than
 hash-based, so to gain rigorous protection against external code directly
 accessing our object attributes, and to avoid related maintenance problems.
 
-* Once the above are done, announce Rosetta/SQL::Routine Developer Release #3.
+* Once the above are done, announce Rosetta/SQL::Routine Developer Release
+#4.
 
-* Add some actual functionality to SQLParser.pm.  When this happens, also add an
-external dependency on something like Parse::RecDescent which will help
-implement said functionality.
+* Add some actual functionality to SQLParser.pm.  When this happens, also
+add an external dependency on something like Parse::RecDescent which will
+help implement said functionality.
 
-* Update the Changes file to summarize events prior to 2005-06-25, where the 
-module existed soley as references in Rosetta::Framework and other places.  Then 
-update the copyright statement so its first year coincides with the first mention; 
-for now it is the same date as SQL::Routine::SQLParser, which is probably wrong.
+* Update the Changes file to summarize events prior to 2005-06-25, where
+the module existed soley as references in Rosetta::Framework and other
+places.  Then update the copyright statement so its first year coincides
+with the first mention; for now it is the same date as
+SQL::Routine::SQLParser, which is probably wrong.
 
 * Make the test suite test more than that the module compiles.
 
-* Any further improvements will be implemented over time as they are needed. 
-See the separately released "Rosetta-Engine-Generic" and "Rosetta-Emulator-DBI"
-distributions for a clue as they are the initial main dependents of the
-SQL::Routine::SQLParser module.
+* Any further improvements will be implemented over time as they are
+needed. See the separately released "Rosetta-Engine-Generic" and
+"Rosetta-Emulator-DBI" distributions for a clue as they are the initial
+main dependents of the SQL::Routine::SQLParser module.
