@@ -2,28 +2,33 @@
 use 5.008001; use utf8; use strict; use warnings;
 
 package SQL::Routine::SQLParser::L::en;
-use version; our $VERSION = qv('0.2.1');
+use version; our $VERSION = qv('0.2.2');
 
 ######################################################################
 
 my $CSP = 'SQL::Routine::SQLParser';
 
 my %text_strings = (
-    'SRT_SP_METH_ARG_UNDEF' => 
-        $CSP.'.{METH}(): undefined (or missing) {ARGNM} argument',
-    'SRT_SP_METH_ARG_NO_ARY' => 
-        $CSP.'.{METH}(): invalid {ARGNM} argument; '.
-        'it is not a Array ref, but rather is "{ARGVL}"',
-    'SRT_SP_METH_ARG_NO_HASH' => 
-        $CSP.'.{METH}(): invalid {ARGNM} argument; '.
-        'it is not a Hash ref, but rather is "{ARGVL}"',
-    'SRT_SP_METH_ARG_NO_NODE' => 
-        $CSP.'.{METH}(): invalid {ARGNM} argument; '.
-        'it is not a Node object, but rather is "{ARGVL}"',
+    'SRT_SP_METH_ARG_UNDEF' =>
+        $CSP . q[.{METH}(): ]
+        . q[undefined (or missing) {ARGNM} argument],
+    'SRT_SP_METH_ARG_NO_ARY' =>
+        $CSP . q[.{METH}(): ]
+        . q[invalid {ARGNM} argument; ]
+        . q[it is not a Array ref, but rather is "{ARGVL}"],
+    'SRT_SP_METH_ARG_NO_HASH' =>
+        $CSP . q[.{METH}(): ]
+        . q[invalid {ARGNM} argument; ]
+        . q[it is not a Hash ref, but rather is "{ARGVL}"],
+    'SRT_SP_METH_ARG_NO_NODE' =>
+        $CSP . q[.{METH}(): ]
+        . q[invalid {ARGNM} argument; ]
+        . q[it is not a Node object, but rather is "{ARGVL}"],
 
-    'SRT_SP_METH_ARG_WRONG_NODE_TYPE' => 
-        $CSP.'.{METH}(): invalid {ARGNM} argument; '.
-        'it is not a "{EXPNTYPE}" Node, but rather is a "{ARGNTYPE}" Node',
+    'SRT_SP_METH_ARG_WRONG_NODE_TYPE' =>
+        $CSP . q[.{METH}(): ]
+        . q[invalid {ARGNM} argument; ]
+        . q[it is not a "{EXPNTYPE}" Node, but rather is a "{ARGNTYPE}" Node],
 );
 
 ######################################################################
@@ -46,7 +51,7 @@ SQL::Routine::SQLParser::L::en - Localization of SQL::Routine::SQLParser for Eng
 
 =head1 VERSION
 
-This document describes SQL::Routine::SQLParser::L::en version 0.2.1.
+This document describes SQL::Routine::SQLParser::L::en version 0.2.2.
 
 =head1 SYNOPSIS
 
@@ -55,7 +60,7 @@ This document describes SQL::Routine::SQLParser::L::en version 0.2.1.
 
     # do work ...
 
-    my $translator = Locale::KeyedText->new_translator( 
+    my $translator = Locale::KeyedText->new_translator(
         ['SQL::Routine::SQLParser::L::', 'SQL::Routine::L::'], ['en'] );
 
     # do work ...
@@ -63,7 +68,7 @@ This document describes SQL::Routine::SQLParser::L::en version 0.2.1.
     eval {
         # do work with SQL::Routine::SQLParser, which may throw an exception ...
     };
-    if( my $error_message_object = $@ ) {
+    if (my $error_message_object = $@) {
         # examine object here if you want and programmatically recover...
 
         # or otherwise do the next few lines...

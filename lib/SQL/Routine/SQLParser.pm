@@ -1,22 +1,23 @@
 #!perl
 use 5.008001; use utf8; use strict; use warnings;
 
-package SQL::Routine::SQLParser;
-use version; our $VERSION = qv('0.2.1');
-
 use only 'Locale::KeyedText' => '1.6.0-';
 use only 'SQL::Routine' => '0.70.0-';
 
+package SQL::Routine::SQLParser;
+use version; our $VERSION = qv('0.2.2');
+
 ######################################################################
 ######################################################################
 
-
+# These are constant values used by this module.
+my $EMPTY_STR = q{};
 
 ######################################################################
 
 sub new {
     my ($class) = @_;
-    my $parser = bless( {}, ref($class) || $class );
+    my $parser = bless {}, ref $class || $class;
 
 
 
@@ -29,10 +30,10 @@ sub new {
 sub _throw_error_message {
     my ($parser, $msg_key, $msg_vars) = @_;
     # Throws an exception consisting of an object.
-    ref($msg_vars) eq 'HASH' or $msg_vars = {};
-    foreach my $var_key (keys %{$msg_vars}) {
-        if( ref($msg_vars->{$var_key}) eq 'ARRAY' ) {
-            $msg_vars->{$var_key} = 'PERL_ARRAY:['.join(',',map {$_||''} @{$msg_vars->{$var_key}}).']';
+    ref $msg_vars eq 'HASH' or $msg_vars = {};
+    for my $var_key (keys %{$msg_vars}) {
+        if (ref $msg_vars->{$var_key} eq 'ARRAY') {
+            $msg_vars->{$var_key} = 'PERL_ARRAY:[' . (join q{,},map {$_||$EMPTY_STR} @{$msg_vars->{$var_key}}) . ']';
         }
     }
     die Locale::KeyedText->new_message( $msg_key, $msg_vars );
@@ -40,21 +41,19 @@ sub _throw_error_message {
 
 sub _assert_arg_node_type {
     my ($parser, $meth_name, $arg_name, $exp_node_types, $arg_value) = @_;
-    unless( defined( $arg_value ) ) {
-        $parser->_throw_error_message( 'SRT_SP_METH_ARG_UNDEF', 
-            { 'METH' => $meth_name, 'ARGNM' => $arg_name } );
-    }
-    unless( ref($arg_value) and UNIVERSAL::isa( $arg_value, 'SQL::Routine::Node' ) ) {
-        $parser->_throw_error_message( 'SRT_SP_METH_ARG_NO_NODE', 
-            { 'METH' => $meth_name, 'ARGNM' => $arg_name, 'ARGVL' => $arg_value } );
-    }
-    @{$exp_node_types} == 0 and return; # any Node type is acceptable
+    $parser->_throw_error_message( 'SRT_SP_METH_ARG_UNDEF',
+        { 'METH' => $meth_name, 'ARGNM' => $arg_name } )
+        if !defined $arg_value;
+    $parser->_throw_error_message( 'SRT_SP_METH_ARG_NO_NODE',
+        { 'METH' => $meth_name, 'ARGNM' => $arg_name, 'ARGVL' => $arg_value } )
+        if !ref $arg_value or !UNIVERSAL::isa( $arg_value, 'SQL::Routine::Node' );
+    return
+        if @{$exp_node_types} == 0; # any Node type is acceptable
     my $given_node_type = $arg_value->get_node_type();
-    unless( grep { $given_node_type eq $_ } @{$exp_node_types} ) {
-        $parser->_throw_error_message( 'SRT_SP_METH_ARG_WRONG_NODE_TYPE', 
-            { 'METH' => $meth_name, 'ARGNM' => $arg_name, 
-            'EXPNTYPE' => $exp_node_types, 'ARGNTYPE' => $given_node_type } );
-    }
+    $parser->_throw_error_message( 'SRT_SP_METH_ARG_WRONG_NODE_TYPE',
+        { 'METH' => $meth_name, 'ARGNM' => $arg_name,
+        'EXPNTYPE' => $exp_node_types, 'ARGNTYPE' => $given_node_type } )
+        if !grep { $given_node_type eq $_ } @{$exp_node_types};
     # If we get here, $arg_value is acceptable to the method.
 }
 
@@ -72,7 +71,7 @@ SQL::Routine::SQLParser - Parse ANSI/ISO SQL:2003 and other SQL variants
 
 =head1 VERSION
 
-This document describes SQL::Routine::SQLParser version 0.2.1.
+This document describes SQL::Routine::SQLParser version 0.2.2.
 
 =head1 SYNOPSIS
 
@@ -134,10 +133,8 @@ This module requires any version of Perl 5.x.y that is at least 5.8.1.
 It also requires the Perl modules L<version> and L<only>, which would
 conceptually be built-in to Perl, but aren't, so they are on CPAN instead.
 
-It also requires these modules that are on CPAN:
-
-    Locale::KeyedText 1.6.0 (for error messages)
-    SQL::Routine 0.70.0
+It also requires these modules that are on CPAN: L<Locale::KeyedText>
+'1.6.0-' (for error messages), L<SQL::Routine> '0.70.0-'.
 
 =head1 INCOMPATIBILITIES
 
